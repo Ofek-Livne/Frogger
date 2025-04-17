@@ -1,8 +1,12 @@
+package base;
+
+import general.GameManager;
+
 import java.awt.*;
 import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 
-abstract class MovingObjectManager extends Thread{
+public abstract class MovingObjectManager extends Thread{
 	protected LinkedList<MovingObject> list;
 	protected int y, size, speed;
 	protected GameManager gameManager;

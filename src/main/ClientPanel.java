@@ -1,3 +1,11 @@
+package main;
+
+import panelsFrames.ReadyPanel;
+import panelsFrames.ServerFrame;
+import utils.DataToClients;
+import utils.Direction;
+import utils.MyKeyAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;

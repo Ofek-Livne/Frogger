@@ -1,3 +1,10 @@
+package movingObjects;
+
+import base.MovingObject;
+import general.GameManager;
+import general.Frog;
+import main.Main;
+
 import javax.swing.*;
 import java.awt.*;
 

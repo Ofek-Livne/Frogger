@@ -1,3 +1,11 @@
+package general;
+
+import base.MovingObjectManager;
+import movingObjectManagers.CarManager;
+import movingObjectManagers.LogManager;
+import movingObjectManagers.TurtleManager;
+import main.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,4 +1,13 @@
+package movingObjectManagers;
+
+import base.MovingObject;
+import base.MovingObjectManager;
+import general.GameManager;
+import main.Main;
+import base.PauseThread;
 import java.util.Random;
+import movingObjects.Log;
+
 
 public class LogManager extends MovingObjectManager {
 	static final int MIN_DISTANCE_BETWEEN_LOGS = 5, MIN_LOG_SIZE = 3, MAX_LOG_SIZE = 6;

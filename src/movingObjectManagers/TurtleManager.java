@@ -1,3 +1,13 @@
+package movingObjectManagers;
+
+import base.MovingObject;
+import base.MovingObjectManager;
+import general.GameManager;
+import main.Main;
+import utils.DataToClients;
+import movingObjects.Turtle;
+import base.PauseThread;
+
 import java.util.Random;
 
 public class TurtleManager extends MovingObjectManager {

@@ -1,9 +1,13 @@
+package base;
+
+import main.Main;
+
 import java.awt.*;
 
 public abstract class PauseThread extends Thread {
-    static int SLEEP_TIME = 10;
-    static boolean isPaused = false;
-    static long pausedTime; // the point in time where pressed to pause
+    public static int SLEEP_TIME = 10;
+    public static boolean isPaused = false;
+    protected static long pausedTime; // the point in time where pressed to pause
 
     public PauseThread() {
         pausedTime = -1;

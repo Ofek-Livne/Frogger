@@ -1,3 +1,11 @@
+package movingObjectManagers;
+
+import base.MovingObjectManager;
+import base.PauseThread;
+import movingObjects.Car;
+import general.GameManager;
+import main.Main;
+
 import java.util.Random;
 
 public class CarManager extends MovingObjectManager {
@@ -22,7 +30,7 @@ public class CarManager extends MovingObjectManager {
 			}
 			list.addLast(new Car(y, size, speed, isLeftToRight, gameManager, carRow));
 			list.getLast().start();
-			PauseThread.checkForPauseManager(distance * Main.TILE_SIZE * MovingObject.SLEEP_TIME / speed);
+			PauseThread.checkForPauseManager(distance * Main.TILE_SIZE * PauseThread.SLEEP_TIME / speed);
 		}
 	}
 }

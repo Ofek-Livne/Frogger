@@ -1,6 +1,11 @@
+package base;
+
+import general.GameManager;
+import main.Main;
+import general.Frog;
 import java.awt.*;
 
-abstract class MovingObject extends PauseThread {
+public abstract class MovingObject extends PauseThread {
 	protected int x, y, size, speed;
 	protected GameManager gameManager;
 	

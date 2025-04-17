@@ -1,3 +1,7 @@
+package utils;
+
+import base.PauseThread;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -56,16 +60,16 @@ public abstract class MyKeyAdapter extends KeyAdapter {
 		
 		public static Image getImage(Direction direction, boolean isFirstFrog) {
 			switch (direction) {
-				case UP: {
+				case Direction.UP: {
 					return getImage(KeyEvent.VK_UP * ((isFirstFrog)? 1 : 10));
 				}
-				case DOWN: {
+				case Direction.DOWN: {
 					return getImage(KeyEvent.VK_DOWN * ((isFirstFrog)? 1 : 10));
 				}
-				case LEFT: {
+				case Direction.LEFT: {
 					return getImage(KeyEvent.VK_LEFT * ((isFirstFrog)? 1 : 10));
 				}
-				case RIGHT: {
+				case Direction.RIGHT: {
 					return getImage(KeyEvent.VK_RIGHT * ((isFirstFrog)? 1 : 10));
 				}
 			}

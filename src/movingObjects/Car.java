@@ -1,7 +1,14 @@
+package movingObjects;
+
+import base.MovingObject;
+import general.GameManager;
+import main.Main;
+
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Car extends MovingObject{
+public class Car extends MovingObject {
 	private boolean isLeftToRight;
 	private Image image;
 	

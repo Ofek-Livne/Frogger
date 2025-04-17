@@ -1,3 +1,9 @@
+package general;
+
+import base.MovingObject;
+import base.MovingObjectManager;
+import main.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
@@ -5,7 +11,8 @@ import java.util.Arrays;
 public class Frog extends Thread {
 	static final Point STARTING_POSITION = new Point
 			(Main.WIDTH_GRID / 2 * Main.TILE_SIZE, (Main.HEIGHT_GRID - 1) * Main.TILE_SIZE);
-	static final int STARTING_EXTRA_LIVES = 3, SIZE = Main.TILE_SIZE;
+	public static final int STARTING_EXTRA_LIVES = 3;
+    public static final int SIZE = Main.TILE_SIZE;
 	private int x, y, extraLives;
 	private Image image;
 	private final Image imageUp;

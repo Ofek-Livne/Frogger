@@ -1,3 +1,11 @@
+package panelsFrames;
+
+import movingObjectManagers.TurtleManager;
+import general.GameManager;
+import main.Main;
+import utils.DataToClients;
+import utils.Direction;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -6,7 +14,7 @@ import java.net.Socket;
 
 public class ServerFrame extends JFrame {
 	
-	static final int PORT = 8911;
+	public static final int PORT = 8911;
 	static final int PLAYERS = 2;
 	
 	private ServerSocket server;
@@ -188,19 +196,19 @@ public class ServerFrame extends JFrame {
 			return;
 		}
 		switch (direction) {
-			case UP: {
+			case Direction.UP: {
 				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(-Main.TILE_SIZE);
 				break;
 			}
-			case DOWN: {
+			case Direction.DOWN: {
 				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(Main.TILE_SIZE);
 				break;
 			}
-			case LEFT: {
+			case Direction.LEFT: {
 				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(-Main.TILE_SIZE);
 				break;
 			}
-			case RIGHT: {
+			case Direction.RIGHT: {
 				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(Main.TILE_SIZE);
 				break;
 			}

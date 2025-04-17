@@ -1,3 +1,9 @@
+package general;
+
+import base.MovingObject;
+import base.PauseThread;
+import main.Main;
+
 import java.awt.*;
 import java.io.*;
 
@@ -49,7 +55,7 @@ public class Timer extends Thread {
 		final int GUI_HEIGHT = Main.TILE_SIZE / 3;
 		final int BAR_OFF_THE_MIDDLE = 2;
 		barPercent =  (TIME - (System.currentTimeMillis() - startTime)) / (float) TIME;
-		if (PauseThread.isPaused && pausedTime == -1) 
+		if (PauseThread.isPaused && pausedTime == -1)
 			pausedPercent = barPercent;
 		
 		g.setColor(Color.BLACK);

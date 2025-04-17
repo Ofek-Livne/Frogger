@@ -1,3 +1,12 @@
+package panelsFrames;
+
+import utils.MyKeyAdapter;
+import base.PauseThread;
+import general.GameManager;
+import main.Main;
+import general.Frog;
+import general.Timer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -72,7 +81,7 @@ public class SoloPanel extends JPanel implements Runnable {
 		Arrays.fill(frog.getLilypadsFree(), true);
 	}
 
-	public class SoloKeyAdapter extends MyKeyAdapter{
+	public class SoloKeyAdapter extends MyKeyAdapter {
 		
 		private Frog frog;
 		

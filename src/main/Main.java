@@ -1,3 +1,9 @@
+package main;
+
+import panelsFrames.MainMenuPanel;
+import panelsFrames.ServerFrame;
+import panelsFrames.SoloPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -5,19 +11,21 @@ import java.io.IOException;
 
 public class Main {
 
-    static final int WIDTH_GRID = 14, HEIGHT_GRID = 13, TILE_SIZE = 60;
+    public static final int WIDTH_GRID = 14;
+    public static final int HEIGHT_GRID = 13;
+    public static final int TILE_SIZE = 60;
     //static final int BORDER_WIDTH = 16, BORDER_HEIGHT = 39; //class
     static final int BORDER_WIDTH = 14, BORDER_HEIGHT = 37; //home
-    static final String FONT_NAME = "ZX Spectrum 7 Bold";
+    public static final String FONT_NAME = "ZX Spectrum 7 Bold";
     static final Dimension gamePanelSize = new Dimension(WIDTH_GRID * TILE_SIZE + BORDER_WIDTH,
                                                         HEIGHT_GRID * TILE_SIZE + BORDER_HEIGHT),
                        mainMenuPanelSize = new Dimension(840 + BORDER_WIDTH,
                                                         840 + BORDER_HEIGHT);
-    static final Color PINK = new Color(253, 85, 118),
-                       TAN = new Color(248, 235, 200),
-                       MAIN_FROG_GREEN = new Color(108, 244, 76),
-                       FROG_GREEN = new Color(0, 255, 33),
-                       FROG_CYAN = new Color(28, 178, 131);
+    public static final Color PINK = new Color(253, 85, 118);
+    public static final Color TAN = new Color(248, 235, 200);
+    public static final Color MAIN_FROG_GREEN = new Color(108, 244, 76);
+    public static final Color FROG_GREEN = new Color(0, 255, 33);
+    public static final Color FROG_CYAN = new Color(28, 178, 131);
     private static JFrame nextFrame = null;
 
     public static void main(String[] args) {

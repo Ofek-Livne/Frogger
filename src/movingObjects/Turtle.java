@@ -1,3 +1,11 @@
+package movingObjects;
+
+import base.MovingObject;
+import general.GameManager;
+import main.Main;
+import base.PauseThread;
+import general.Frog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;

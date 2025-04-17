@@ -1,3 +1,11 @@
+package utils;
+
+import base.MovingObject;
+import base.MovingObjectManager;
+import movingObjectManagers.CarManager;
+import movingObjects.Turtle;
+import general.Frog;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,9 +14,9 @@ public class DataToClients implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	static final short NUM_OF_ROADS = 5;
+	public static final short NUM_OF_ROADS = 5;
 	static final short ROAD_BUFFER_COLUMNS = 6;
-	static final short EMPTY = -420;
+	public static final short EMPTY = -420;
 	
 	private short[][] carsPositions;
 	private short[][][] waterPositionsAndSizes; //x = x of object, y = size in pixels
@@ -200,7 +208,7 @@ public class DataToClients implements Serializable {
 	}
 	
 	public void fillData(CarManager[] roadManager, ArrayList<MovingObjectManager> waterManager, boolean[][] lilypadsFree,
-			Frog[] frogs, Direction[] frogsDirections) {
+						 Frog[] frogs, Direction[] frogsDirections) {
 		fillCarsPositions(roadManager);
 		fillWaterPositionsAndSizes(waterManager);
 		fillTurtlesDivingData();
