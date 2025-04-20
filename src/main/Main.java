@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-
     public static final int WIDTH_GRID = 14;
     public static final int HEIGHT_GRID = 13;
     public static final int TILE_SIZE = 60;
@@ -78,9 +77,9 @@ public class Main {
     }
 
     public static void drawBottomRow(Graphics g) {
-        for (int i = 0; i < Main.WIDTH_GRID; i++) {
+        for (int i = 0; i < WIDTH_GRID; i++) {
             g.setColor((i % 2 == 0) ? Color.GRAY : Color.DARK_GRAY);
-            g.fillRect(i * Main.TILE_SIZE, (Main.HEIGHT_GRID - 1) * Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE);
+            g.fillRect(i * TILE_SIZE, (HEIGHT_GRID - 1) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
         }
     }
 
