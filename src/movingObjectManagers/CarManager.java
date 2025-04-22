@@ -2,9 +2,9 @@ package movingObjectManagers;
 
 import base.MovingObjectManager;
 import base.PauseThread;
-import movingObjects.Car;
+import constants.Constants;
 import general.GameManager;
-import main.Main;
+import movingObjects.Car;
 
 import java.util.Random;
 
@@ -24,13 +24,14 @@ public class CarManager extends MovingObjectManager {
 		Random rnd = new Random();
 		int distance;
 		while (true) {
-			distance = rnd.nextInt(Main.WIDTH_GRID - MIN_DISTANCE_BETWEEN_CARS) + MIN_DISTANCE_BETWEEN_CARS + size / Main.TILE_SIZE;
+			distance = rnd.nextInt(Constants.WIDTH_GRID - MIN_DISTANCE_BETWEEN_CARS)
+					+ MIN_DISTANCE_BETWEEN_CARS + size / Constants.TILE_SIZE;
 			while(!list.isEmpty() && !list.getFirst().isAlive()) {
 				list.removeFirst();
 			}
 			list.addLast(new Car(y, size, speed, isLeftToRight, gameManager, carRow));
 			list.getLast().start();
-			PauseThread.checkForPauseManager(distance * Main.TILE_SIZE * PauseThread.SLEEP_TIME / speed);
+			PauseThread.checkForPauseManager(distance * Constants.TILE_SIZE * PauseThread.SLEEP_TIME / speed);
 		}
 	}
 }

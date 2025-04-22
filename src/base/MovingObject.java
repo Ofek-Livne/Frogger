@@ -1,8 +1,9 @@
 package base;
 
-import general.GameManager;
-import main.Main;
+import constants.Constants;
 import general.Frog;
+import general.GameManager;
+
 import java.awt.*;
 
 public abstract class MovingObject extends PauseThread {
@@ -28,9 +29,9 @@ public abstract class MovingObject extends PauseThread {
 	
 	public boolean IsColliding(Frog frog) {
 		if (!frog.getAbleToMove()) return false;
-		return !(frog.getX() + Main.TILE_SIZE <= this.x ||
+		return !(frog.getX() + Constants.TILE_SIZE <= this.x ||
 				frog.getX() >= this.x + size ||
-				frog.getY() + Main.TILE_SIZE <= this.y ||
-				frog.getY() >= this.y + Main.TILE_SIZE);
+				frog.getY() + Constants.TILE_SIZE <= this.y ||
+				frog.getY() >= this.y + Constants.TILE_SIZE);
 	}
 }

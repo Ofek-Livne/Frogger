@@ -1,6 +1,6 @@
 package base;
 
-import main.Main;
+import constants.Constants;
 
 import java.awt.*;
 
@@ -65,16 +65,17 @@ public abstract class PauseThread extends Thread {
         if (!isPaused)
             return;
         g.setColor(Color.RED);
-        g.fillRect((Main.WIDTH_GRID / 2 - 3) * Main.TILE_SIZE, (int) ((Main.HEIGHT_GRID / 2 - .5) * Main.TILE_SIZE),
-                6 * Main.TILE_SIZE, 2 * Main.TILE_SIZE);
+        g.fillRect((Constants.WIDTH_GRID / 2 - 3) * Constants.TILE_SIZE,
+                (int) ((Constants.HEIGHT_GRID / 2 - .5) * Constants.TILE_SIZE),
+                6 * Constants.TILE_SIZE, 2 * Constants.TILE_SIZE);
         g.setColor(Color.YELLOW);
-        g.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 40));
+        g.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 40));
 
         //display the text
         String str = "PAUSED";
         int stringLen = (int) g.getFontMetrics().getStringBounds(str, g).getWidth();
-        int start = 6 * Main.TILE_SIZE / 2 - stringLen / 2;
-        g.drawString(str, start + (Main.WIDTH_GRID / 2 - 3) * Main.TILE_SIZE,
-                (int) ((Main.HEIGHT_GRID / 2 + 0.75) * Main.TILE_SIZE));
+        int start = 6 * Constants.TILE_SIZE / 2 - stringLen / 2;
+        g.drawString(str, start + (Constants.WIDTH_GRID / 2 - 3) * Constants.TILE_SIZE,
+                (int) ((Constants.HEIGHT_GRID / 2 + 0.75) * Constants.TILE_SIZE));
     }
 }

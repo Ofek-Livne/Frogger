@@ -2,11 +2,12 @@ package movingObjectManagers;
 
 import base.MovingObject;
 import base.MovingObjectManager;
-import general.GameManager;
-import main.Main;
 import base.PauseThread;
-import java.util.Random;
+import constants.Constants;
+import general.GameManager;
 import movingObjects.Log;
+
+import java.util.Random;
 
 
 public class LogManager extends MovingObjectManager {
@@ -21,14 +22,14 @@ public class LogManager extends MovingObjectManager {
 		Random rnd = new Random();
 		int distance;
 		while (true) {
-			size = (rnd.nextInt(1 + MAX_LOG_SIZE - MIN_LOG_SIZE) + MIN_LOG_SIZE) * Main.TILE_SIZE;
-			distance = rnd.nextInt(Main.WIDTH_GRID - MIN_DISTANCE_BETWEEN_LOGS) + MIN_DISTANCE_BETWEEN_LOGS + size / Main.TILE_SIZE;
+			size = (rnd.nextInt(1 + MAX_LOG_SIZE - MIN_LOG_SIZE) + MIN_LOG_SIZE) * Constants.TILE_SIZE;
+			distance = rnd.nextInt(Constants.WIDTH_GRID - MIN_DISTANCE_BETWEEN_LOGS) + MIN_DISTANCE_BETWEEN_LOGS + size / Constants.TILE_SIZE;
 			while(!list.isEmpty() && !list.getFirst().isAlive()) {
 				list.removeFirst();
 			}
 			list.addLast(new Log(y, size, speed, gameManager));
 			list.getLast().start();
-			PauseThread.checkForPauseManager(distance * Main.TILE_SIZE * MovingObject.SLEEP_TIME / speed);
+			PauseThread.checkForPauseManager(distance * Constants.TILE_SIZE * MovingObject.SLEEP_TIME / speed);
 		}
 	}
 }

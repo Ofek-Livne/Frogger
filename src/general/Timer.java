@@ -2,7 +2,7 @@ package general;
 
 import base.MovingObject;
 import base.PauseThread;
-import main.Main;
+import constants.Constants;
 
 import java.awt.*;
 import java.io.*;
@@ -52,7 +52,7 @@ public class Timer extends Thread {
 	}
 	
 	public void draw(Graphics g) {
-		final int GUI_HEIGHT = Main.TILE_SIZE / 3;
+		final int GUI_HEIGHT = Constants.TILE_SIZE / 3;
 		final int BAR_OFF_THE_MIDDLE = 2;
 		barPercent =  (TIME - (System.currentTimeMillis() - startTime)) / (float) TIME;
 		if (PauseThread.isPaused && pausedTime == -1)
@@ -60,24 +60,24 @@ public class Timer extends Thread {
 		
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Arial", Font.BOLD, 10)); //display time and high score
-		displayString(g, "time: " + (System.currentTimeMillis() - gameStartTime) / 1000, Main.TILE_SIZE * Main.HEIGHT_GRID - GUI_HEIGHT);
-		displayString(g, "HS: " + highscore, Main.TILE_SIZE * Main.HEIGHT_GRID - GUI_HEIGHT + 10);
+		displayString(g, "time: " + (System.currentTimeMillis() - gameStartTime) / 1000, Constants.TILE_SIZE * Constants.HEIGHT_GRID - GUI_HEIGHT);
+		displayString(g, "HS: " + highscore, Constants.TILE_SIZE * Constants.HEIGHT_GRID - GUI_HEIGHT + 10);
 		
 		if (frog.getAbleToMove()){ // draw time bar if alive
-			g.drawRect(BAR_OFF_THE_MIDDLE * Main.TILE_SIZE, Main.TILE_SIZE * Main.HEIGHT_GRID - GUI_HEIGHT,
-					(Main.WIDTH_GRID - 2 * BAR_OFF_THE_MIDDLE) * Main.TILE_SIZE - 1, GUI_HEIGHT);
+			g.drawRect(BAR_OFF_THE_MIDDLE * Constants.TILE_SIZE, Constants.TILE_SIZE * Constants.HEIGHT_GRID - GUI_HEIGHT,
+					(Constants.WIDTH_GRID - 2 * BAR_OFF_THE_MIDDLE) * Constants.TILE_SIZE - 1, GUI_HEIGHT);
 			g.setColor(Color.RED);
 			barPercent = (PauseThread.isPaused ? pausedPercent : barPercent);
-			g.fillRect(BAR_OFF_THE_MIDDLE * Main.TILE_SIZE, Main.TILE_SIZE * Main.HEIGHT_GRID - GUI_HEIGHT,
-					(int) ((Main.WIDTH_GRID - 2 * BAR_OFF_THE_MIDDLE) * Main.TILE_SIZE * barPercent), GUI_HEIGHT);
+			g.fillRect(BAR_OFF_THE_MIDDLE * Constants.TILE_SIZE, Constants.TILE_SIZE * Constants.HEIGHT_GRID - GUI_HEIGHT,
+					(int) ((Constants.WIDTH_GRID - 2 * BAR_OFF_THE_MIDDLE) * Constants.TILE_SIZE * barPercent), GUI_HEIGHT);
 		}
 				
 	}
 	
 	public void displayString(Graphics g, String str, int y) {
 		int stringLen = (int) g.getFontMetrics().getStringBounds(str, g).getWidth();
-		int start = Main.TILE_SIZE/2 - stringLen/2;
-		g.drawString(str, start + Main.TILE_SIZE * (Main.WIDTH_GRID - 2), y);
+		int start = Constants.TILE_SIZE/2 - stringLen/2;
+		g.drawString(str, start + Constants.TILE_SIZE * (Constants.WIDTH_GRID - 2), y);
 	}
 	
 	@Override

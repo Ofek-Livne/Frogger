@@ -1,10 +1,10 @@
 package general;
 
 import base.MovingObjectManager;
+import constants.Constants;
 import movingObjectManagers.CarManager;
 import movingObjectManagers.LogManager;
 import movingObjectManagers.TurtleManager;
-import main.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class GameManager {
 		this.frameSize = new Point((int)d.getWidth(), (int)d.getHeight());
 		frogs = new Frog[players];
 		for (int i = 0; i < players; i++) {
-			frogs[i] = new Frog(Main.TILE_SIZE, i == 0, frameSize, this);
+			frogs[i] = new Frog(Constants.TILE_SIZE, i == 0, frameSize, this);
 			frogs[i].start();
 		}
 		lilypadImages = new Image[5];
@@ -40,17 +40,17 @@ public class GameManager {
 		Map<Integer, Integer> carsSpeed = new HashMap<>();
 		carsSpeed.put(0, 4); carsSpeed.put(1, 3); carsSpeed.put(2, 2); carsSpeed.put(3, 4); carsSpeed.put(4, 2);
 		for (int i = 0; i < NUM_OF_ROADS; i++) {
-			roadManager[i] = new CarManager((Main.HEIGHT_GRID - 2 - i) * Main.TILE_SIZE,
-					Main.TILE_SIZE *(1 + i / (NUM_OF_ROADS - 1)), carsSpeed.get(i), this , i % 2 == 1,  i);
+			roadManager[i] = new CarManager((Constants.HEIGHT_GRID - 2 - i) * Constants.TILE_SIZE,
+					Constants.TILE_SIZE *(1 + i / (NUM_OF_ROADS - 1)), carsSpeed.get(i), this , i % 2 == 1,  i);
 			roadManager[i].start();
 		}
 		
 		waterManager = new ArrayList<>();
-		waterManager.add(new LogManager(Main.TILE_SIZE, 3, this));
-		waterManager.add(new TurtleManager(2 * Main.TILE_SIZE, 2 * Main.TILE_SIZE, 3, this));
-		waterManager.add(new LogManager(3 * Main.TILE_SIZE, 4, this));
-		waterManager.add(new LogManager(4 * Main.TILE_SIZE, 2, this));
-		waterManager.add(new TurtleManager(5 * Main.TILE_SIZE, 2 * Main.TILE_SIZE, 2, this));
+		waterManager.add(new LogManager(Constants.TILE_SIZE, 3, this));
+		waterManager.add(new TurtleManager(2 * Constants.TILE_SIZE, 2 * Constants.TILE_SIZE, 3, this));
+		waterManager.add(new LogManager(3 * Constants.TILE_SIZE, 4, this));
+		waterManager.add(new LogManager(4 * Constants.TILE_SIZE, 2, this));
+		waterManager.add(new TurtleManager(5 * Constants.TILE_SIZE, 2 * Constants.TILE_SIZE, 2, this));
 		for (MovingObjectManager waterLaneManager : waterManager) {
 			waterLaneManager.start();
 		}
@@ -78,23 +78,25 @@ public class GameManager {
 	
 	public void drawPanel(Graphics g)
 	{
-		for (int i = 0; i < Main. WIDTH_GRID; i++) {
+		for (int i = 0; i < Constants.WIDTH_GRID; i++) {
 			g.setColor((i % 2 == 1)?Color.GRAY:Color.DARK_GRAY);
-			g.fillRect(i * Main.TILE_SIZE, 6 * Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE);
+			g.fillRect(i * Constants.TILE_SIZE, 6 * Constants.TILE_SIZE, Constants.TILE_SIZE, Constants.TILE_SIZE);
 		}
 		g.setColor(Color.BLACK);
-		g.fillRect(0, (Main.WIDTH_GRID - 7) * Main.TILE_SIZE, Main.WIDTH_GRID * Main.TILE_SIZE, 5* Main.TILE_SIZE);
+		g.fillRect(0, (Constants.WIDTH_GRID - 7) * Constants.TILE_SIZE,
+				Constants.WIDTH_GRID * Constants.TILE_SIZE, 5 * Constants.TILE_SIZE);
 		for (int i = 0; i < NUM_OF_ROADS; i++) {
 			roadManager[i].draw(g);
 		}
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, Main.WIDTH_GRID * Main.TILE_SIZE, 6 * Main.TILE_SIZE);
+		g.fillRect(0, 0, Constants.WIDTH_GRID * Constants.TILE_SIZE, 6 * Constants.TILE_SIZE);
 		for (MovingObjectManager movingObjectManager : waterManager) {
 			movingObjectManager.draw(g);
 		}
 		
 		for (int i = 0; i < frogs[0].getLilypadsFree().length; i++) {
-			g.drawImage(lilypadImages[frogs[0].getLilypadsFree()[i] ? 1 : 0], (1 + i * 3) * Main.TILE_SIZE, 0, Main.TILE_SIZE, Main.TILE_SIZE, null);
+			g.drawImage(lilypadImages[frogs[0].getLilypadsFree()[i] ? 1 : 0], (1 + i * 3) * Constants.TILE_SIZE,
+					0, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 		}
 		for (int i = 0; i < frogs.length; i++) {
 			frogs[0].draw(g);

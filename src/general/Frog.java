@@ -2,7 +2,7 @@ package general;
 
 import base.MovingObject;
 import base.MovingObjectManager;
-import main.Main;
+import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +10,9 @@ import java.util.Arrays;
 
 public class Frog extends Thread {
 	static final Point STARTING_POSITION = new Point
-			(Main.WIDTH_GRID / 2 * Main.TILE_SIZE, (Main.HEIGHT_GRID - 1) * Main.TILE_SIZE);
+			(Constants.WIDTH_GRID / 2 * Constants.TILE_SIZE, (Constants.HEIGHT_GRID - 1) * Constants.TILE_SIZE);
 	public static final int STARTING_EXTRA_LIVES = 3;
-    public static final int SIZE = Main.TILE_SIZE;
+    public static final int SIZE = Constants.TILE_SIZE;
 	private int x, y, extraLives;
 	private Image image;
 	private final Image imageUp;
@@ -113,9 +113,11 @@ public class Frog extends Thread {
 	public void draw(Graphics g) {
 		final int EXTRA_LIVES_SIZE = SIZE / 3;
 		g.drawImage(image, x, y, SIZE, SIZE, null); // draw the frog
-		if (x == 0 && y == Main.TILE_SIZE * (Main.HEIGHT_GRID - 1)) return; // draw the extra lives if not on their tile
+		if (x == 0 && y == Constants.TILE_SIZE * (Constants.HEIGHT_GRID - 1)) return; // draw the extra lives if not on their tile
 		for (int i = 0; i < extraLives; i++) {
-			g.drawImage(imageUp, i * EXTRA_LIVES_SIZE, Main.TILE_SIZE * Main.HEIGHT_GRID - EXTRA_LIVES_SIZE, EXTRA_LIVES_SIZE, EXTRA_LIVES_SIZE, null);
+			g.drawImage(imageUp, i * EXTRA_LIVES_SIZE,
+					Constants.TILE_SIZE * Constants.HEIGHT_GRID - EXTRA_LIVES_SIZE,
+					EXTRA_LIVES_SIZE, EXTRA_LIVES_SIZE, null);
 		}
 	}
 	
@@ -136,7 +138,7 @@ public class Frog extends Thread {
 	}
 	
 	public boolean isDrowning() {
-		if (y < Main.TILE_SIZE || y >= 6 * Main.TILE_SIZE)
+		if (y < Constants.TILE_SIZE || y >= 6 * Constants.TILE_SIZE)
 			return false;
 		for (MovingObjectManager movingObjectManager : gameManager.getWaterManager()) {
 			for (MovingObject movingObject : movingObjectManager.getList()) {
@@ -153,7 +155,8 @@ public class Frog extends Thread {
 		if (y > 0)
 			return -1;
 		for (int i = 0; i < getLilypadsFree().length; i++) {	
-			if (getLilypadsFree()[i] && x + SIZE / 2 > (1 + i * 3) * Main.TILE_SIZE && x + SIZE / 3 < (2 + i * 3) * Main.TILE_SIZE) {
+			if (getLilypadsFree()[i] && x + SIZE / 2 > (1 + i * 3) * Constants.TILE_SIZE
+					&& x + SIZE / 3 < (2 + i * 3) * Constants.TILE_SIZE) {
 				return i;				
 			}
 		}

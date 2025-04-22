@@ -2,11 +2,11 @@ package movingObjectManagers;
 
 import base.MovingObject;
 import base.MovingObjectManager;
-import general.GameManager;
-import main.Main;
-import utils.DataToClients;
-import movingObjects.Turtle;
 import base.PauseThread;
+import constants.Constants;
+import general.GameManager;
+import movingObjects.Turtle;
+import utils.DataToClients;
 
 import java.util.Random;
 
@@ -26,7 +26,8 @@ public class TurtleManager extends MovingObjectManager {
 		int distance;
 		Turtle turtleDiving;
 		while (true) {
-			distance = rnd.nextInt(Main.WIDTH_GRID - MIN_DISTANCE_BETWEEN_TURTLES) + MIN_DISTANCE_BETWEEN_TURTLES + size / Main.TILE_SIZE;
+			distance = rnd.nextInt(Constants.WIDTH_GRID - MIN_DISTANCE_BETWEEN_TURTLES)
+					+ MIN_DISTANCE_BETWEEN_TURTLES + size / Constants.TILE_SIZE;
 			while(!list.isEmpty() && !list.getFirst().isAlive()) {
 				list.removeFirst();
 			}
@@ -36,11 +37,11 @@ public class TurtleManager extends MovingObjectManager {
 				turtleDiving =((Turtle)list.get(rnd.nextInt(list.size())));
 				turtleDiving.dive();
 				if (dataToClients != null) {
-					dataToClients.setTurtleDiving(turtleDiving, y / (3 * Main.TILE_SIZE)); //y2 -> 0, y5-> 1
+					dataToClients.setTurtleDiving(turtleDiving, y / (3 * Constants.TILE_SIZE)); //y2 -> 0, y5-> 1
 				}
 				startTime += DIVE_FREQUENCY;
 			}
-			PauseThread.checkForPauseManager(distance * Main.TILE_SIZE * MovingObject.SLEEP_TIME / speed);
+			PauseThread.checkForPauseManager(distance * Constants.TILE_SIZE * MovingObject.SLEEP_TIME / speed);
 		}
 	}
 	

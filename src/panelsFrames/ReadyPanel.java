@@ -1,6 +1,6 @@
 package panelsFrames;
 
-import main.Main;
+import constants.Constants;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -35,7 +35,7 @@ public class ReadyPanel extends JPanel {
 		
 		// title	
 		title = new JLabel("FROGGER");
-		title.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 120));
+		title.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 120));
 		gbc.gridy = 1;
 		backgroundLabel.add(title, gbc);
 		
@@ -46,8 +46,8 @@ public class ReadyPanel extends JPanel {
 		// ready button
 		readyButton = new JButton("ready?");
 		readyButton.setPreferredSize(new Dimension(400, 200));
-		readyButton.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 60));
-		readyButton.setBackground(Main.PINK);
+		readyButton.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 60));
+		readyButton.setBackground(Constants.PINK);
 		readyButton.setBorderPainted(false);
 		readyButton.setFocusPainted(false);
 		readyButton.setContentAreaFilled(false);
@@ -57,9 +57,9 @@ public class ReadyPanel extends JPanel {
             public void mouseEntered(MouseEvent evt) {
 				if (!isReady)
 					if (isFirstFrog)
-						readyButton.setForeground(Main.FROG_GREEN);
+						readyButton.setForeground(Constants.FROG_GREEN);
 					else
-						readyButton.setForeground(Main.FROG_CYAN);
+						readyButton.setForeground(Constants.FROG_CYAN);
             }
 			@Override
             public void mouseExited(MouseEvent evt) {
@@ -72,9 +72,9 @@ public class ReadyPanel extends JPanel {
 				readyButton.setForeground(Color.BLACK);
 				readyButton.setText("ready!");
 				if (isFirstFrog)
-					readyButton.setBackground(Main.FROG_GREEN);
+					readyButton.setBackground(Constants.FROG_GREEN);
 				else
-					readyButton.setBackground(Main.FROG_CYAN);
+					readyButton.setBackground(Constants.FROG_CYAN);
 			}
         });
 		gbc.gridy = 3;
@@ -86,7 +86,7 @@ public class ReadyPanel extends JPanel {
 		
 		// you are line
 		youAre = new JLabel("You are:");
-		youAre.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 40));
+		youAre.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 40));
 		Image biggerYouAreImage = new ImageIcon(frog_image).getImage();
 		biggerYouAreImage = biggerYouAreImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		youAreImage = new JLabel(new ImageIcon(biggerYouAreImage));
@@ -102,7 +102,7 @@ public class ReadyPanel extends JPanel {
 		instructions = new JLabel("<html>first to all 5 lilipads wins!"
 				+ "<br>don't get hit by the cars<br>"
 				+ "surf on the logs and turtles</html>");
-		instructions.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 30));
+		instructions.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 30));
 		gbc.gridy = 7;
 		backgroundLabel.add(instructions, gbc);
 		
