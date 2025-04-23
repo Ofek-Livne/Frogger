@@ -1,6 +1,6 @@
 package panelsFrames;
 
-import main.Main;
+import constants.Constants;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -73,8 +73,8 @@ public class MainMenuPanel extends JPanel {
         Border emptyBorder = BorderFactory.createEmptyBorder();
 
         button.setPreferredSize(new Dimension(180, 100));
-        button.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 45));
-        button.setBackground(Main.TAN);
+        button.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 45));
+        button.setBackground(Constants.TAN);
 
         button.setBorder(emptyBorder);
         button.setFocusPainted(false);
@@ -85,18 +85,18 @@ public class MainMenuPanel extends JPanel {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent evt) {
-                button.setForeground(Main.PINK);
+                button.setForeground(Constants.PINK);
             }
 
             @Override
             public void mouseExited(MouseEvent evt) {
                 button.setForeground(Color.BLACK);
-                button.setBackground(Main.TAN);
+                button.setBackground(Constants.TAN);
             }
 
             @Override
             public void mousePressed(MouseEvent evt) {
-                button.setBackground(Main.MAIN_FROG_GREEN);
+                button.setBackground(Constants.MAIN_FROG_GREEN);
             }
         });
     }

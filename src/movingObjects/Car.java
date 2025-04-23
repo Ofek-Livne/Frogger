@@ -2,7 +2,7 @@ package movingObjects;
 
 import base.MovingObject;
 import general.GameManager;
-import main.Main;
+import constants.Constants;
 
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class Car extends MovingObject {
 	public Car(int y, int size, int speed, boolean isLeftToRight, GameManager gameManager, int carRow) {
 		super(y, size, speed, gameManager);
 		this.isLeftToRight = isLeftToRight;
-		this.x = isLeftToRight ? -size : Main.WIDTH_GRID * Main.TILE_SIZE;
+		this.x = isLeftToRight ? -size : Constants.WIDTH_GRID * Constants.TILE_SIZE;
 		this.image = new ImageIcon("images\\cars\\Car" + carRow + ".png").getImage();
 	}
 	
@@ -36,6 +36,6 @@ public class Car extends MovingObject {
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(image, x, y, size, Main.TILE_SIZE, null);
+		g.drawImage(image, x, y, size, Constants.TILE_SIZE, null);
 	}
 }

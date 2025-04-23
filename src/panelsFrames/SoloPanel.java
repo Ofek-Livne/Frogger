@@ -1,11 +1,11 @@
 package panelsFrames;
 
-import utils.MyKeyAdapter;
 import base.PauseThread;
-import general.GameManager;
-import main.Main;
 import general.Frog;
+import general.GameManager;
 import general.Timer;
+import main.Main;
+import utils.MyKeyAdapter;
 
 import javax.swing.*;
 import java.awt.*;

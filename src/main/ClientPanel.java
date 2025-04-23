@@ -5,6 +5,7 @@ import panelsFrames.ServerFrame;
 import utils.DataToClients;
 import utils.Direction;
 import utils.MyKeyAdapter;
+import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -103,38 +104,39 @@ public class ClientPanel extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) {
 		if (data == null) return;
 		
-		for (int i = 0; i < Main. WIDTH_GRID; i++) {
+		for (int i = 0; i < Constants. WIDTH_GRID; i++) {
 			g.setColor((i % 2 == 1)?Color.GRAY:Color.DARK_GRAY);
-			g.fillRect(i * Main.TILE_SIZE, 6 * Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE);
+			g.fillRect(i * Constants.TILE_SIZE, 6 * Constants.TILE_SIZE, Constants.TILE_SIZE, Constants.TILE_SIZE);
 		}
 		g.setColor(Color.BLACK);
-		g.fillRect(0, (Main.WIDTH_GRID - 7) * Main.TILE_SIZE, Main.WIDTH_GRID * Main.TILE_SIZE, 5 * Main.TILE_SIZE);
+		g.fillRect(0, (Constants.WIDTH_GRID - 7) * Constants.TILE_SIZE,
+				Constants.WIDTH_GRID * Constants.TILE_SIZE, 5 * Constants.TILE_SIZE);
 		for (int i = 0; i < DataToClients.NUM_OF_ROADS; i++) {
 			int j = 0;
 			while (carsPositions[i][j] != DataToClients.EMPTY) {
-				g.drawImage(carsImages[i], carsPositions[i][j], (Main.HEIGHT_GRID - 2 - i) * Main.TILE_SIZE,
-						Main.TILE_SIZE *(1 + i / (DataToClients.NUM_OF_ROADS - 1)), Main.TILE_SIZE, null);
+				g.drawImage(carsImages[i], carsPositions[i][j], (Constants.HEIGHT_GRID - 2 - i) * Constants.TILE_SIZE,
+						Constants.TILE_SIZE *(1 + i / (DataToClients.NUM_OF_ROADS - 1)), Constants.TILE_SIZE, null);
 				j++;
 			}
 		}
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, Main.WIDTH_GRID * Main.TILE_SIZE, 6 * Main.TILE_SIZE);
+		g.fillRect(0, 0, Constants.WIDTH_GRID * Constants.TILE_SIZE, 6 * Constants.TILE_SIZE);
 		int y;
 		for (int i = 0; i < DataToClients.NUM_OF_ROADS; i++) {
-			y = (i + 1) * Main.TILE_SIZE;
+			y = (i + 1) * Constants.TILE_SIZE;
 			int j = 0;
 			while (waterPositionsAndSizes[i][j][0] != DataToClients.EMPTY) {
 				short[] p = waterPositionsAndSizes[i][j];
 				//p[1] = size
 				if (i == 1 || i == 4) { //turtle
-					for (int k = 0; k < p[1]; k += Main.TILE_SIZE + 10) {
-						g.drawImage(turtleImages[0], p[0] + k, y, Main.TILE_SIZE, Main.TILE_SIZE, null);
+					for (int k = 0; k < p[1]; k += Constants.TILE_SIZE + 10) {
+						g.drawImage(turtleImages[0], p[0] + k, y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 					}
 				}
 				else { //log
-					g.drawImage(logImages[2], p[0], y, Main.TILE_SIZE, Main.TILE_SIZE, null);
-					g.drawImage(logImages[1], p[0] + Main.TILE_SIZE, y, p[1] - 2 * Main.TILE_SIZE, Main.TILE_SIZE, null);
-					g.drawImage(logImages[0], p[0] + p[1] - Main.TILE_SIZE, y, Main.TILE_SIZE, Main.TILE_SIZE, null);
+					g.drawImage(logImages[2], p[0], y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
+					g.drawImage(logImages[1], p[0] + Constants.TILE_SIZE, y, p[1] - 2 * Constants.TILE_SIZE, Constants.TILE_SIZE, null);
+					g.drawImage(logImages[0], p[0] + p[1] - Constants.TILE_SIZE, y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 				}
 				j++;
 			}
@@ -142,11 +144,11 @@ public class ClientPanel extends JPanel implements Runnable {
 		g.setColor(Color.BLUE);
 		for (int i = 0; i < turtlesDivingData.length; i++) {
 			if (turtlesDivingData[i][0] != DataToClients.EMPTY) {
-				y = (3 * i + 2) * Main.TILE_SIZE;
-				for (int j = 0; j < Main.TILE_SIZE * 2; j += Main.TILE_SIZE + 10) {
-					g.fillRect(turtlesDivingData[i][0] + j, y, Main.TILE_SIZE, Main.TILE_SIZE);
+				y = (3 * i + 2) * Constants.TILE_SIZE;
+				for (int j = 0; j < Constants.TILE_SIZE * 2; j += Constants.TILE_SIZE + 10) {
+					g.fillRect(turtlesDivingData[i][0] + j, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
 					g.drawImage(turtleImages[turtlesDivingData[i][1]], turtlesDivingData[i][0] + j, y,
-							Main.TILE_SIZE, Main.TILE_SIZE, null);
+							Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 				}
 			}
 		}
@@ -154,16 +156,16 @@ public class ClientPanel extends JPanel implements Runnable {
 		Image lilypadImage;
 		for (int i = 0; i < lilypadsFreeTwoPlayes[0].length; i++) {
 			lilypadImage = lilypadImages[1 + (lilypadsFreeTwoPlayes[0][i]? 0 : 1) + (lilypadsFreeTwoPlayes[1][i]? 0 : 2)];
-			g.drawImage(lilypadImage, (1 + i * 3) * Main.TILE_SIZE, 0, Main.TILE_SIZE, Main.TILE_SIZE, null);
+			g.drawImage(lilypadImage, (1 + i * 3) * Constants.TILE_SIZE, 0, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 		}
 		
 		Main.drawBottomRow(g);
 		int myFrogIndex = isFirstFrog ? 0 : 1;
 		int otherFrogIndex = !isFirstFrog ? 0 : 1;
 		g.drawImage(displayedFrogImages[myFrogIndex], frogsLocation[myFrogIndex][0],
-				frogsLocation[myFrogIndex][1], Main.TILE_SIZE, Main.TILE_SIZE, null);
+				frogsLocation[myFrogIndex][1], Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 		g.drawImage(displayedFrogImages[otherFrogIndex], frogsLocation[otherFrogIndex][0],
-				frogsLocation[otherFrogIndex][1], Main.TILE_SIZE, Main.TILE_SIZE, null);
+				frogsLocation[otherFrogIndex][1], Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 	}
 	
 	public void initImages() {
@@ -196,7 +198,8 @@ public class ClientPanel extends JPanel implements Runnable {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		JFrame frame = new JFrame("ERROR - Client did not get the isFirstFrog");
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize(Main.WIDTH_GRID * Main.TILE_SIZE + Main.BORDER_WIDTH, Main.HEIGHT_GRID * Main.TILE_SIZE + Main.BORDER_HEIGHT);
+		frame.setSize(Constants.WIDTH_GRID * Constants.TILE_SIZE + Constants.BORDER_WIDTH,
+				Constants.HEIGHT_GRID * Constants.TILE_SIZE + Constants.BORDER_HEIGHT);
 		frame.setLocation(dim.width/2 - frame.getSize().width/2, dim.height/2 - frame.getSize().height/2);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);

@@ -1,8 +1,8 @@
 package movingObjects;
 
 import base.MovingObject;
+import constants.Constants;
 import general.GameManager;
-import main.Main;
 import base.PauseThread;
 import general.Frog;
 
@@ -18,7 +18,7 @@ public class Turtle extends MovingObject implements Serializable{
 	
 	public Turtle(int y, int size, int speed, GameManager gameManager) {
 		super(y, size, speed, gameManager);
-		this.x = Main.WIDTH_GRID * Main.TILE_SIZE;
+		this.x = Constants.WIDTH_GRID * Constants.TILE_SIZE;
 		this.images = new Image[3];
 		this.images[0] = new ImageIcon("images\\turtles\\Turtle0.png").getImage();
 		this.images[1] = new ImageIcon("images\\turtles\\Turtle1.png").getImage();
@@ -63,8 +63,8 @@ public class Turtle extends MovingObject implements Serializable{
 	@Override
 	public void draw(Graphics g) {
 		if (state > 2) return;
-		for (int i = 0; i < size; i += Main.TILE_SIZE + 10) {
-			g.drawImage(images[state], x + i, y, Main.TILE_SIZE, Main.TILE_SIZE, null);
+		for (int i = 0; i < size; i += Constants.TILE_SIZE + 10) {
+			g.drawImage(images[state], x + i, y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 		}
 	}
 	

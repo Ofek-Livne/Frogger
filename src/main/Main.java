@@ -3,6 +3,7 @@ package main;
 import panelsFrames.MainMenuPanel;
 import panelsFrames.ServerFrame;
 import panelsFrames.SoloPanel;
+import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,22 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-
-    public static final int WIDTH_GRID = 14;
-    public static final int HEIGHT_GRID = 13;
-    public static final int TILE_SIZE = 60;
-    //static final int BORDER_WIDTH = 16, BORDER_HEIGHT = 39; //class
-    static final int BORDER_WIDTH = 14, BORDER_HEIGHT = 37; //home
-    public static final String FONT_NAME = "ZX Spectrum 7 Bold";
-    static final Dimension gamePanelSize = new Dimension(WIDTH_GRID * TILE_SIZE + BORDER_WIDTH,
-                                                        HEIGHT_GRID * TILE_SIZE + BORDER_HEIGHT),
-                       mainMenuPanelSize = new Dimension(840 + BORDER_WIDTH,
-                                                        840 + BORDER_HEIGHT);
-    public static final Color PINK = new Color(253, 85, 118);
-    public static final Color TAN = new Color(248, 235, 200);
-    public static final Color MAIN_FROG_GREEN = new Color(108, 244, 76);
-    public static final Color FROG_GREEN = new Color(0, 255, 33);
-    public static final Color FROG_CYAN = new Color(28, 178, 131);
     private static JFrame nextFrame = null;
 
     public static void main(String[] args) {
@@ -34,7 +19,7 @@ public class Main {
         MainMenuFrame = new JFrame("Frogger");
         MainMenuPanel mainMenuPanel = new MainMenuPanel();
 
-        MainMenuFrame.setSize(mainMenuPanelSize);
+        MainMenuFrame.setSize(Constants.MAIN_MENU_PANEL_SIZE);
         MainMenuFrame.add(mainMenuPanel);
         MainMenuFrame.setVisible(true);
         MainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,14 +46,14 @@ public class Main {
         switch (response) {
             case 0:
                 nextFrame = new JFrame("Frogger - Solo");
-                nextFrame.setSize(gamePanelSize);
-                SoloPanel soloPanel = new SoloPanel(gamePanelSize);
+                nextFrame.setSize(Constants.GAME_PANEL_SIZE);
+                SoloPanel soloPanel = new SoloPanel(Constants.GAME_PANEL_SIZE);
                 nextFrame.add(soloPanel);
                 Image icon = Toolkit.getDefaultToolkit().getImage("images\\icons\\frog.png");
                 nextFrame.setIconImage(icon);
                 break;
             case 1:
-                nextFrame = new ServerFrame(gamePanelSize);
+                nextFrame = new ServerFrame(Constants.GAME_PANEL_SIZE);
                 break;
         }
         nextFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,9 +63,10 @@ public class Main {
     }
 
     public static void drawBottomRow(Graphics g) {
-        for (int i = 0; i < Main.WIDTH_GRID; i++) {
+        for (int i = 0; i < Constants.WIDTH_GRID; i++) {
             g.setColor((i % 2 == 0) ? Color.GRAY : Color.DARK_GRAY);
-            g.fillRect(i * Main.TILE_SIZE, (Main.HEIGHT_GRID - 1) * Main.TILE_SIZE, Main.TILE_SIZE, Main.TILE_SIZE);
+            g.fillRect(i * Constants.TILE_SIZE, (Constants.HEIGHT_GRID - 1) * Constants.TILE_SIZE,
+                    Constants.TILE_SIZE, Constants.TILE_SIZE);
         }
     }
 

@@ -1,9 +1,9 @@
 package movingObjects;
 
 import base.MovingObject;
+import constants.Constants;
 import general.GameManager;
 import general.Frog;
-import main.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,14 +36,14 @@ public class Log extends MovingObject {
 	
 	@Override
 	public boolean IsColliding(Frog frog) {
-		return !(frog.getX() >= this.x + size - Main.TILE_SIZE / 2) && super.IsColliding(frog);
+		return !(frog.getX() >= this.x + size - Constants.TILE_SIZE / 2) && super.IsColliding(frog);
 	}
 	
 	@Override
 	public void draw(Graphics g)
 	{
-		g.drawImage(images[2], x, y, Main.TILE_SIZE, Main.TILE_SIZE, null);
-		g.drawImage(images[1], x + Main.TILE_SIZE, y, size  - 2 * Main.TILE_SIZE, Main.TILE_SIZE, null);
-		g.drawImage(images[0], x + size - Main.TILE_SIZE, y, Main.TILE_SIZE, Main.TILE_SIZE, null);
+		g.drawImage(images[2], x, y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
+		g.drawImage(images[1], x + Constants.TILE_SIZE, y, size  - 2 * Constants.TILE_SIZE, Constants.TILE_SIZE, null);
+		g.drawImage(images[0], x + size - Constants.TILE_SIZE, y, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
 	}
 }

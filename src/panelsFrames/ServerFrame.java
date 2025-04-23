@@ -2,7 +2,7 @@ package panelsFrames;
 
 import movingObjectManagers.TurtleManager;
 import general.GameManager;
-import main.Main;
+import constants.Constants;
 import utils.DataToClients;
 import utils.Direction;
 
@@ -43,12 +43,12 @@ public class ServerFrame extends JFrame {
 		super("Frogger - Server Window");
 		Image icon = Toolkit.getDefaultToolkit().getImage("images\\icons\\server_icon.png"); 
 		setIconImage(icon);
-		getContentPane().setBackground(Main.TAN);
+		getContentPane().setBackground(Constants.TAN);
 		setVisible(true);
 		setSize(400, 200);
 		label = new JLabel("no players joined");
 		label.setBounds(200, 0, 200, 50);
-		label.setFont(new Font(Main.FONT_NAME, Font.PLAIN, 25));
+		label.setFont(new Font(Constants.FONT_NAME, Font.PLAIN, 25));
 		add(label);
 		gameManager = new GameManager(gamePanelSize, PLAYERS);
 		frogsDirections = new Direction[2];
@@ -197,19 +197,19 @@ public class ServerFrame extends JFrame {
 		}
 		switch (direction) {
 			case Direction.UP: {
-				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(-Main.TILE_SIZE);
+				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(-Constants.TILE_SIZE);
 				break;
 			}
 			case Direction.DOWN: {
-				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(Main.TILE_SIZE);
+				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addY(Constants.TILE_SIZE);
 				break;
 			}
 			case Direction.LEFT: {
-				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(-Main.TILE_SIZE);
+				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(-Constants.TILE_SIZE);
 				break;
 			}
 			case Direction.RIGHT: {
-				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(Main.TILE_SIZE);
+				gameManager.getFrogs()[(isFirstFrog ? 0 : 1)].addX(Constants.TILE_SIZE);
 				break;
 			}
 		}
