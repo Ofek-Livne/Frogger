@@ -102,12 +102,9 @@ public class Frog extends Thread {
 	}
 	
 	public boolean areAllLilypadsFull() {
-		int i = 0;
-		boolean res = true;
-		while (i < lilypadsFree.length && res) {
-			res &= !lilypadsFree[i++];
-		}
-		return res;
+		for (boolean lilypadFree : lilypadsFree)
+			if (lilypadFree) return false;
+		return true;
 	}
 	
 	public void draw(Graphics g) {
